@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinedelicia.AdminPageController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="1000.0">
+         <children>
+            <Pane prefHeight="62.0" prefWidth="1000.0" style="-fx-background-color: #3c3c3c;">
+               <children>
+                  <Label layoutX="22.0" layoutY="11.0" text="Painel Administrativo" textFill="#96b946">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TabPane prefHeight="538.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Entretenimento">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TabPane layoutX="1.0" prefHeight="509.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Filmes">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="1021.0">
+                                             <children>
+                                                <TableView fx:id="tblViewMovies" layoutX="30.0" layoutY="51.0" prefHeight="159.0" prefWidth="556.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="clmnName" editable="false" prefWidth="279.0" resizable="false" text="Nome" />
+                                                    <TableColumn fx:id="clmnYear" editable="false" minWidth="0.0" prefWidth="69.0" resizable="false" text="Ano" />
+                                                      <TableColumn fx:id="clmnDirector" editable="false" prefWidth="166.0" resizable="false" text="Diretor" />
+                                                      <TableColumn fx:id="clmnType" editable="false" prefWidth="40.0" resizable="false" text="Tipo" />
+                                                  </columns>
+                                                </TableView>
+                                                <Separator layoutX="613.0" layoutY="15.0" orientation="VERTICAL" prefHeight="447.0" prefWidth="15.0" />
+                                                <Label layoutX="14.0" layoutY="11.0" text="Lista de Filmes">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font></Label>
+                                                <Button layoutX="414.0" layoutY="226.0" mnemonicParsing="false" onAction="#updateMovie" prefHeight="30.0" prefWidth="80.0" text="Atualizar" />
+                                                <Button layoutX="506.0" layoutY="226.0" mnemonicParsing="false" onAction="#deleteMovie" prefHeight="30.0" prefWidth="80.0" text="Remover" />
+                                                <VBox layoutX="644.0" layoutY="51.0" prefHeight="410.0" prefWidth="327.0" spacing="18.0">
+                                                   <children>
+                                                      <TextField fx:id="txtName" prefHeight="125.0" promptText="Nome" />
+                                                      <TextField fx:id="txtDirector" prefHeight="125.0" promptText="Diretor" />
+                                                      <HBox alignment="CENTER" prefHeight="125.0" prefWidth="327.0" spacing="25.0">
+                                                         <children>
+                                                            <ComboBox fx:id="cboType" prefHeight="32.0" prefWidth="154.0" promptText="Tipo" />
+                                                            <ComboBox fx:id="cboClassification" prefHeight="32.0" prefWidth="211.0" promptText="Classificação">
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                            </ComboBox>
+                                                            <TextField fx:id="txtimdbRatio" prefHeight="125.0" promptText="Nota" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="CENTER" prefHeight="125.0" prefWidth="327.0" spacing="25.0">
+                                                         <children>
+                                                            <TextField fx:id="txtActors" prefHeight="32.0" prefWidth="235.0" promptText="Atores" />
+                                                            <TextField fx:id="txtYear" prefHeight="32.0" prefWidth="71.0" promptText="Ano" />
+                                                         </children>
+                                                      </HBox>
+                                                      <TextField fx:id="txtimgcover" prefHeight="125.0" promptText="Imagem de Capa" />
+                                                      <HBox prefHeight="125.0" prefWidth="327.0" spacing="30.0">
+                                                         <children>
+                                                            <TextField fx:id="txtGenre" prefHeight="125.0" promptText="Gênero" />
+                                                            <TextField fx:id="txtCountry" prefHeight="125.0" promptText="País" />
+                                                         </children></HBox>
+                                                      <TextArea fx:id="txtSynopsis" prefHeight="159.0" promptText="Sinopse" wrapText="true" />
+                                                      <Button fx:id="regMovie" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#addMovie" prefHeight="25.0" prefWidth="80.0" text="Adicionar" />
+                                                   </children>
+                                                </VBox>
+                                                <Separator layoutX="16.0" layoutY="258.0" prefHeight="30.0" prefWidth="584.0" />
+                                                <Label layoutX="633.0" layoutY="11.0" text="Cadastrar">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="273.0" text="Detalhes">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="322.0" layoutY="226.0" mnemonicParsing="false" onAction="#btnNewMovieClicked" prefHeight="30.0" prefWidth="80.0" text="Novo" />
+                                                <HBox layoutX="28.0" layoutY="308.0" prefHeight="169.0" prefWidth="570.0" spacing="15.0">
+                                                   <children>
+                                                      <ImageView fx:id="imgCoverMovie" fitHeight="165.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../res/defaultCover.png" />
+                                                         </image></ImageView>
+                                                      <VBox prefHeight="200.0" prefWidth="562.0">
+                                                         <children>
+                                                            <HBox alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="100.0" spacing="5.0">
+                                                               <children>
+                                                                  <Label fx:id="movieNameLabel" prefHeight="30.0" text="Nome">
+                                                                     <font>
+                                                                        <Font name="Segoe UI Semilight" size="20.0" />
+                                                                     </font>
+                                                                     <HBox.margin>
+                                                                        <Insets top="-8.0" />
+                                                                     </HBox.margin>
+                                                                  </Label>
+                                                                  <Label fx:id="movieYearLabel" alignment="BASELINE_LEFT" text="Ano">
+                                                                     <font>
+                                                                        <Font name="Segoe UI Semilight" size="16.0" />
+                                                                     </font>
+                                                                  </Label>
+                                                               </children>
+                                                            </HBox>
+                                                            <Label fx:id="movieRatingLabel" prefHeight="17.0" prefWidth="87.0" text="Nota">
+                                                               <VBox.margin>
+                                                                  <Insets top="-12.0" />
+                                                               </VBox.margin>
+                                                            </Label>
+                                                            <Label fx:id="movieDirectorLabel" text="Diretor">
+                                                               <font>
+                                                                  <Font size="13.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </Label>
+                                                            <Label fx:id="movieActorsLabel" text="Atores">
+                                                               <font>
+                                                                  <Font size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="movieGenreLabel" text="Gênero">
+                                                               <font>
+                                                                  <Font size="13.0" />
+                                                               </font>
+                                                               <VBox.margin>
+                                                                  <Insets top="5.0" />
+                                                               </VBox.margin>
+                                                            </Label>
+                                                            <Label fx:id="movieSynopsisLabel" alignment="TOP_LEFT" prefHeight="63.0" prefWidth="459.0" text="Sinopse" wrapText="true">
+                                                               <font>
+                                                                  <Font size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                                <Label fx:id="movieID" layoutX="723.0" layoutY="18.0" text="Label" visible="false" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab text="Salas">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="1021.0">
+                                             <children>
+                                                <TableView fx:id="tblViewRooms" layoutX="30.0" layoutY="51.0" prefHeight="159.0" prefWidth="556.0">
+                                                   <columns>
+                                                      <TableColumn fx:id="clmnNameRoom" editable="false" prefWidth="136.0" resizable="false" text="Nome" />
+                                                      <TableColumn fx:id="clmnNameMovie" editable="false" minWidth="0.0" prefWidth="279.0" resizable="false" text="Filme Vigente" />
+                                                      <TableColumn fx:id="clmnNumberChairsRoom" editable="false" prefWidth="99.0" resizable="false" text="Nº de Cadeiras" />
+                                                      <TableColumn fx:id="clmnTypeRoom" editable="false" prefWidth="41.0" resizable="false" text="Tipo" />
+                                                   </columns>
+                                                </TableView>
+                                                <Separator layoutX="613.0" layoutY="15.0" orientation="VERTICAL" prefHeight="258.0" prefWidth="15.0" />
+                                                <Label layoutX="14.0" layoutY="11.0" text="Lista de Salas">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="414.0" layoutY="226.0" mnemonicParsing="false" onAction="#updateRoom" prefHeight="30.0" prefWidth="80.0" text="Atualizar" />
+                                                <Button layoutX="506.0" layoutY="226.0" mnemonicParsing="false" onAction="#deleteRoom" prefHeight="30.0" prefWidth="80.0" text="Remover" />
+                                                <VBox layoutX="644.0" layoutY="52.0" prefHeight="205.0" prefWidth="327.0" spacing="18.0">
+                                                   <children>
+                                                      <TextField fx:id="txtNameRoom" prefHeight="124.0" promptText="Nome" />
+                                                      <TextField fx:id="txtNumberChairsRoom" prefHeight="124.0" prefWidth="327.0" promptText="Número de Cadeiras" />
+                                                      <HBox alignment="CENTER" prefHeight="125.0" prefWidth="327.0" spacing="25.0">
+                                                         <children>
+                                                            <ComboBox fx:id="cboMovieList" prefHeight="34.0" prefWidth="236.0" promptText="Filme">
+                                                               <HBox.margin>
+                                                                  <Insets />
+                                                               </HBox.margin>
+                                                            </ComboBox>
+                                                            <ComboBox fx:id="cboRoomType" prefHeight="33.0" prefWidth="76.0" promptText="Tipo" />
+                                                         </children>
+                                                      </HBox>
+                                                      <Button fx:id="regRoom" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addRoom" prefHeight="114.0" prefWidth="80.0" text="Cadastrar" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="27.0" layoutY="317.0" prefHeight="200.0" prefWidth="562.0">
+                                                   <children>
+                                                      <HBox alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="100.0" spacing="5.0">
+                                                         <children>
+                                                            <Label fx:id="roomNameLabel" text="Nome">
+                                                               <font>
+                                                                  <Font name="Segoe UI Semilight" size="20.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="roomNumberChairsLabel" alignment="BASELINE_LEFT" text="(Nº de cadeiras)">
+                                                               <font>
+                                                                  <Font name="Segoe UI Semilight" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label fx:id="roomMovieNameLabel" alignment="BASELINE_LEFT" text="Filme">
+                                                         <font>
+                                                            <Font name="Segoe UI Semilight" size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="roomTypeLabel" text="Tipo">
+                                                         <VBox.margin>
+                                                            <Insets top="-5.0" />
+                                                         </VBox.margin></Label>
+                                                   </children>
+                                                </VBox>
+                                                <Separator layoutX="16.0" layoutY="258.0" prefHeight="30.0" prefWidth="604.0" />
+                                                <Label layoutX="633.0" layoutY="11.0" text="Cadastrar">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="14.0" layoutY="282.0" text="Detalhes">
+                                                   <font>
+                                                      <Font name="Segoe UI Semilight" size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="322.0" layoutY="226.0" mnemonicParsing="false" onAction="#btnNewRoomClicked" prefHeight="30.0" prefWidth="80.0" text="Novo" />
+                                                <Label fx:id="roomID" layoutX="715.0" layoutY="18.0" text="Label" visible="false" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Funcionários">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="355.0" layoutY="222.0" mnemonicParsing="false" onAction="#updateSelectedEmployer" text="Atualizar" />
+                              <Button layoutX="446.0" layoutY="222.0" mnemonicParsing="false" onAction="#deleteSelectedEmployer" text="Demitir" />
+                              <Label layoutX="14.0" layoutY="6.0" text="Lista de Funcionários">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tblViewPeoples" layoutX="28.0" layoutY="49.0" prefHeight="159.0" prefWidth="498.0">
+                                 <columns>
+                                    <TableColumn fx:id="clmnIDPeople" editable="false" prefWidth="35.0" resizable="false" text="ID" />
+                                    <TableColumn fx:id="clmnNamePeople" editable="false" minWidth="0.0" prefWidth="234.0" resizable="false" text="Nome" />
+                                    <TableColumn fx:id="clmnPositionPeople" editable="false" prefWidth="126.0" resizable="false" text="Cargo" />
+                                    <TableColumn fx:id="clmnSalaryPeople" editable="false" prefWidth="102.0" resizable="false" text="Salário" />
+                                 </columns>
+                              </TableView>
+                              <VBox layoutX="587.0" layoutY="61.0" prefHeight="425.0" prefWidth="386.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="txtNamePeople" prefHeight="36.0" prefWidth="342.0" promptText="Nome" />
+                                    <HBox prefHeight="36.0" prefWidth="342.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtCPFPeople" prefHeight="36.0" prefWidth="170.0" promptText="CPF" />
+                                          <TextField fx:id="txtAgePeople" prefHeight="36.0" prefWidth="74.0" promptText="Idade" />
+                                          <ComboBox fx:id="cboSexPeople" prefHeight="36.0" prefWidth="113.0" promptText="Sexo" />
+                                       </children>
+                                    </HBox>
+                                    <Separator opacity="0.5" prefWidth="200.0" />
+                                    <HBox prefHeight="36.0" prefWidth="328.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtUsernamePeople" prefHeight="35.0" prefWidth="212.0" promptText="Login" />
+                                          <PasswordField fx:id="txtPwdPeople" prefHeight="35.0" prefWidth="190.0" promptText="Senha" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="36.0" prefWidth="328.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtMailPeople" prefHeight="35.0" prefWidth="224.0" promptText="E-mail" />
+                                          <TextField fx:id="txtTelPeople" prefHeight="35.0" prefWidth="203.0" promptText="Telefone" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="36.0" prefWidth="328.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtSalaryPeople" prefHeight="36.0" prefWidth="253.0" promptText="Salário" />
+                                          <ComboBox fx:id="cboPositionPeople" prefHeight="36.0" prefWidth="112.0" promptText="Cargo" />
+                                       </children>
+                                    </HBox>
+                                    <Separator opacity="0.5" prefWidth="200.0" />
+                                    <HBox prefHeight="36.0" prefWidth="328.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtStreetPeople" prefHeight="35.0" prefWidth="227.0" promptText="Rua" />
+                                          <TextField fx:id="txtCEPPeople" prefHeight="35.0" prefWidth="147.0" promptText="CEP" />
+                                          <TextField fx:id="txtNumberPeople" prefHeight="35.0" prefWidth="100.0" promptText="Número" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="36.0" prefWidth="328.0" spacing="20.0">
+                                       <children>
+                                          <TextField fx:id="txtCityPeople" prefHeight="36.0" prefWidth="169.0" promptText="Cidade" />
+                                          <ComboBox fx:id="cboStatePeople" prefHeight="36.0" prefWidth="89.0" promptText="Estado" />
+                                          <TextField fx:id="txtCountryPeople" prefHeight="36.0" prefWidth="103.0" promptText="País" />
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="regPeople" mnemonicParsing="false" onAction="#registerNewEmployer" text="Cadastrar" />
+                                 </children>
+                              </VBox>
+                              <Label layoutX="574.0" layoutY="15.0" text="Cadastrar">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="551.0" layoutY="23.0" orientation="VERTICAL" prefHeight="465.0" prefWidth="15.0" />
+                              <Label layoutX="14.0" layoutY="274.0" text="Detalhes">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="15.0" layoutY="255.0" prefHeight="30.0" prefWidth="543.0" />
+                              <VBox layoutX="25.0" layoutY="309.0" prefHeight="186.0" prefWidth="512.0">
+                                 <children>
+                                    <HBox alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="100.0" spacing="5.0">
+                                       <children>
+                                          <Label fx:id="peopleNameLabel" prefHeight="30.0" text="Nome">
+                                             <font>
+                                                <Font name="Segoe UI Semilight" size="20.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets top="-8.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="peoplePositionLabel" alignment="BASELINE_LEFT" text="Cargo">
+                                             <font>
+                                                <Font name="Segoe UI Semilight" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label fx:id="peopleLoginLabel" prefHeight="17.0" prefWidth="87.0" text="\@Login">
+                                       <VBox.margin>
+                                          <Insets top="-12.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="peopleMailLabel" text="E-mail">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="peopleTelLabel" text="Telefone">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="peopleCPFLabel" text="CPF">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label fx:id="peopleAgeLabel" text="Idade">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="peopleSexLabel" text="Sexo">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="peopleSalaryLabel" text="Salário">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="peopleAddressLabel" text="Endereço">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="5.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Button layoutX="264.0" layoutY="222.0" mnemonicParsing="false" onAction="#btnNewPeopleClicked" text="Novo" />
+                              <Label fx:id="peopleID" layoutX="663.0" layoutY="22.0" text="Label" visible="false" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Relatórios">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+        <URL value="@adminpageStyleSheet.css" />
+   </stylesheets>
+</AnchorPane>
